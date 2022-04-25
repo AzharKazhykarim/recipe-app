@@ -16,13 +16,8 @@ const ContentWrapper: FC = () => {
     const api = await fetch(
       `https://www.themealdb.com/api/json/v1/1/search.php?s=${category}`
     );
-    const categ = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/categories.php`
-    );
     const data = await api.json();
-    const some = await categ.json();
     setRecipes(data.meals);
-    console.log(some);
   };
   return (
     <>
