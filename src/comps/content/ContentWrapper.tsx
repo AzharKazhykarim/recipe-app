@@ -1,8 +1,8 @@
-import CardItem from "../card/CardItem";
 import { Container, Grid, styled } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { RecipeType } from "./RecipeType";
+import RecipeReviewCard from "../card/RecipeReviewCard";
 
 const ContentWrapper: FC = () => {
   const [recipes, setRecipes] = useState<RecipeType>();
@@ -25,19 +25,27 @@ const ContentWrapper: FC = () => {
         <h2 style={{ marginLeft: 15 }}>{category}</h2>
         <Grid container>
           {recipes?.map((recipe) => {
+            var arr: Array<string> = [];
+            for (let i = 1; i <= 5; i++) {
+              let strIngredient: string = "strIngredient";
+              strIngredient = strIngredient + String(i);
+              arr.push(recipe.strIngredient);
+            }
+
             return (
-              <GridStyled item xs={6} md={3} key={recipe.idMeal}>
-                <div>
-                  <CardItem
-                    title={recipe.strMeal}
-                    strMealThumb={recipe.strMealThumb}
-                    country={recipe.strArea}
-                  />
-                </div>
+              <GridStyled item xs={4} md={4} key={recipe.idMeal}>
+                <RecipeReviewCard
+                  title={recipe.strMeal}
+                  strMealThumb={recipe.strMealThumb}
+                  strIngredients={arr}
+                  strInstructions={recipe.strInstructions}
+                />
               </GridStyled>
             );
           })}
         </Grid>
+
+        {/* <RecipeReviewCard/> */}
       </Container>
     </>
   );

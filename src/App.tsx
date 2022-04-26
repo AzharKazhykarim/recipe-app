@@ -6,18 +6,21 @@ import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
 
 function App() {
-  const [login, setLogin] = useState<boolean>(false);
+  //токен просто хранить в себе email при входе с логин
+  //по имейлу можно будет добавлять рецепты в фавориты
+  const [token, setToken] = useState<string>("azharkazhikarimova@gmail.com");
+  
   return (
     <>
-      <UserContext.Provider value={{ login, setLogin }}>
-        <BrowserRouter>
+      <BrowserRouter>
+        <UserContext.Provider value={{ token, setToken }}>
           <Navbar />
           <Routes>
             <Route path="/login" element={<Login />} />
             <Route path="/categories/:category" element={<ContentWrapper />} />
           </Routes>
-        </BrowserRouter>
-      </UserContext.Provider>
+        </UserContext.Provider>
+      </BrowserRouter>
     </>
   );
 }

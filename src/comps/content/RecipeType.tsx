@@ -2,7 +2,9 @@ export type RecipeType = [
   {
     idMeal: number;
     strMeal: string;
-    strMealThumb: string | undefined;
-    strArea: string | undefined;
+    strMealThumb: string;
+    strArea: string;
+    strInstructions: string;
+    strIngredient: string;
   }
 ];
