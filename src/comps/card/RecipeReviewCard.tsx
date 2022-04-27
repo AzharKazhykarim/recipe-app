@@ -59,7 +59,7 @@ const RecipeReviewCard: React.FC<CardProps> = ({
           <FavoriteIconStyled onClick={addToFavorites} />
         </IconButton>
         <IconButton aria-label="share">
-          <a style={{ color: "#68a4a4" }} href={strYoutube} target="_blank">
+          <a style={{ color: "#68a4a4", display:'flex', alignItems:'center'}} href={strYoutube} target="_blank">
             <SlowMotionVideoIcon />
           </a>
         </IconButton>
