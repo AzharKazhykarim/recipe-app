@@ -7,7 +7,7 @@ const Navbar: FC = () => {
   return (
     <>
       <GridWrapper container>
-        <GridAboveWrapper item xs={12}>
+        {/* <GridAboveWrapper item xs={12}>
           <GridRight item xs={8}>
             <h6>Меню</h6>
             <h6 style={{ marginLeft: 30 }}>Блог</h6>
@@ -19,7 +19,7 @@ const Navbar: FC = () => {
             <h6 style={{ marginLeft: "auto" }}>+7 (700) 110 10 59</h6>
             <h6 style={{ marginLeft: 30 }}>Меню</h6>
           </GridRight>
-        </GridAboveWrapper>
+        </GridAboveWrapper> */}
         <BoxStyled>
           <GridBelowWrapper item xs={12}>
             <GridRight item xs={8}>
@@ -46,11 +46,10 @@ const Navbar: FC = () => {
               </Link>
             </GridRight>
             <GridRight item xs={4}>
-              <ButtonStyled variant="outlined">Sign In</ButtonStyled>
-              <ButtonStyled1 variant="contained">
+              <ButtonStyled variant="contained">
                 <ShoppingBasketIcon />
                 My Recipes
-              </ButtonStyled1>
+              </ButtonStyled>
             </GridRight>
           </GridBelowWrapper>
         </BoxStyled>
@@ -58,21 +57,17 @@ const Navbar: FC = () => {
     </>
   );
 };
+
 const ButtonStyled = styled(Button)`
-  padding: 8px;
-  border-radius: 50px;
-  font-size: 13px;
-  margin-left: auto;
-  color: black;
-  outline: 1px #ffffff;
-  background: white;
-`;
-const ButtonStyled1 = styled(Button)`
   background: #b84484;
+  display: flex;
+  align-items: center;
+  justtify-content: space-between;
   padding: 8px;
-  border-radius: 50px;
-  font-size: 13px;
-  margin-left: 8px;
+  border-radius: 25px;
+  font-size: 12px;
+  font-family: "Montserrat", sans-serif;
+  margin-left: auto;
 `;
 const GridWrapper = styled(Grid)`
   margin: 0;

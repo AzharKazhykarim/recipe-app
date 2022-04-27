@@ -13,7 +13,7 @@ import { users } from "../../db/users";
 import { useUserContext } from "../../contexts/UserContext";
 
 const Login: FC = () => {
-  const { token, setToken } = useUserContext();
+  const { setToken } = useUserContext();
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
@@ -24,7 +24,6 @@ const Login: FC = () => {
         setToken(email);
       }
     });
-    console.log(token);
   };
 
   return (

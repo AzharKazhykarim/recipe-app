@@ -6,5 +6,6 @@ export type RecipeType = [
     strArea: string;
     strInstructions: string;
     strIngredient: string;
+    strYoutube:string;
   }
 ];

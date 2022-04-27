@@ -18,12 +18,14 @@ const ContentWrapper: FC = () => {
     );
     const data = await api.json();
     setRecipes(data.meals);
+    console.log(data.meals);
   };
   return (
     <>
       <Container fixed>
         <h2 style={{ marginLeft: 15 }}>{category}</h2>
         <Grid container>
+          {/* did not worked yet */}
           {recipes?.map((recipe) => {
             var arr: Array<string> = [];
             for (let i = 1; i <= 5; i++) {
@@ -38,7 +40,7 @@ const ContentWrapper: FC = () => {
                   title={recipe.strMeal}
                   strMealThumb={recipe.strMealThumb}
                   strIngredients={arr}
-                  strInstructions={recipe.strInstructions}
+                  strYoutube={recipe.strYoutube}
                 />
               </GridStyled>
             );
