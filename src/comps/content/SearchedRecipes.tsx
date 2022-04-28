@@ -2,34 +2,32 @@ import { Container, Grid, styled } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipeReviewCard from "../card/RecipeReviewCard";
-import SearchPage from "../searchbar/SearchPage";
 import { useSearchbarContext } from "../../contexts/SearchToggleContext";
 import { RecipeType } from "../../models/RecipeType";
 import { formation } from "../../utils/util";
-const ContentWrapper: FC = () => {
+const SearchedRecipes: FC = () => {
   const { isOpenSearchbar } = useSearchbarContext();
   const [recipes, setRecipes] = useState<RecipeType>();
-  const { category } = useParams();
+  const { input } = useParams();
 
   useEffect(() => {
     getRecipes();
-  }, [category]);
+  }, [input]);
 
   const getRecipes = async () => {
     const api = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${category}`
+      `https://www.themealdb.com/api/json/v1/1/search.php?s=${input}`
     );
     const data = await api.json();
     setRecipes(data.meals);
+    console.log(data.meals)
   };
   return (
     <>
       <Container fixed>
-        <h2 style={{ marginLeft: 15 }}>{category}</h2>
         <Grid container>
           {recipes?.map((recipe) => {
             var arr: Array<string> = formation(recipe);
-
             var filteredArr = arr.filter((str) => {
               return !str.startsWith(" - ");
             });
@@ -50,7 +48,7 @@ const ContentWrapper: FC = () => {
     </>
   );
 };
-export default ContentWrapper;
+export default SearchedRecipes;
 
 const GridStyled = styled(Grid)`
   margin: 10px auto;

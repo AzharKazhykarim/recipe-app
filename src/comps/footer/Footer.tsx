@@ -7,7 +7,7 @@ const Footer: FC = () => {
   return (
     <>
       <BoxStyled>
-        <TypographyStyled variant="h5" gutterBottom>
+        <TypographyStyled variant="h4" gutterBottom>
           One Lab Project
         </TypographyStyled>
         <BoxInnerWrapper>
@@ -22,22 +22,24 @@ const Footer: FC = () => {
 export default Footer;
 const BoxStyled = styled(Box)`
   width: 100%;
-  height: 150px;
-  margin-top: 35px;
   display: flex;
+  margin-top: 25px;
   align-items: center;
+  justify-content: center;
   flex-direction: column;
   background: #92acbe;
-  padding-top: 20px;
+  padding: 30px 0;
 `;
 
 const TypographyStyled = styled(Typography)`
   color: #fff;
+  font-family: "Water Brush", cursive;
 `;
 
 const BoxInnerWrapper = styled(Box)`
-display:flex;
-align-items:center;
-color:#fff;
-justify-content:space-between;
+  display: flex;
+  align-items: center;
+  color: #fff;
+  justify-content: space-evenly;
+  width: 125px;
 `;

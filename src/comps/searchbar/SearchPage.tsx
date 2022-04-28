@@ -1,36 +1,15 @@
-import {
-  Button,
-  Container,
-  Grid,
-  Snackbar,
-  styled,
-  TextField,
-} from "@mui/material";
+import { Button, Container, Snackbar, styled, TextField } from "@mui/material";
 import { FC, useEffect, useRef, useState } from "react";
-import RecipeReviewCard from "../card/RecipeReviewCard";
-import { RecipeType } from "../content/RecipeType";
 import Alert from "@mui/material/Alert";
-import AlertTitle from "@mui/material/AlertTitle";
-import Stack from "@mui/material/Stack";
-
+import { useNavigate } from "react-router-dom";
 const SearchPage: FC = () => {
   const [inputSearch, setInputSearch] = useState<string>("");
-  const [recipes, setRecipes] = useState<RecipeType>();
   const [isAlertOpened, setIsAlertOpened] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null!);
+  const navigate = useNavigate();
 
   const getRecipe = async () => {
-    const api = await fetch(
-      `https://www.themealdb.com/api/json/v1/1/search.php?s=${inputSearch}`
-    );
-
-    const data = await api.json();
-    if (data.meals === null) {
-      setIsAlertOpened(true);
-      setInterval(async () => setIsAlertOpened(false), 3000);
-    }
-    setRecipes(data.meals);
-    console.log(data);
+    navigate(`/search/search/${inputSearch}`);
   };
 
   useEffect(() => {
@@ -52,28 +31,9 @@ const SearchPage: FC = () => {
           value={inputSearch}
           onChange={(e) => setInputSearch(e.target.value)}
         />
-        <Button variant="contained" onClick={getRecipe}>
+        <ButtonStyled variant="contained" onClick={getRecipe}>
           Search
-        </Button>
-        {recipes?.map((recipe) => {
-          var arr: Array<string> = [];
-          for (let i = 1; i <= 5; i++) {
-            let strIngredient: string = "strIngredient";
-            strIngredient = strIngredient + String(i);
-            arr.push(recipe.strIngredient);
-          }
-
-          return (
-            <GridStyled item xs={4} md={4} key={recipe.idMeal}>
-              <RecipeReviewCard
-                title={recipe.strMeal}
-                strMealThumb={recipe.strMealThumb}
-                strIngredients={arr}
-                strYoutube={recipe.strYoutube}
-              />
-            </GridStyled>
-          );
-        })}
+        </ButtonStyled>
       </ContainerStyled>
     </>
   );
@@ -91,7 +51,15 @@ const TextFieldStyled = styled(TextField)`
   background: #fff;
   outline: none;
 `;
-const GridStyled = styled(Grid)`
-  margin: 10px auto;
-  width: 100%;
+const ButtonStyled = styled(Button)`
+  background: #b84484;
+  display: flex;
+  align-items: center;
+  justtify-content: space-between;
+  padding: 8px;
+  border-radius: 20px;
+  font-size: 14px;
+  margin-top: 15px;
+  width: 20%;
+  font-family: "Montserrat", sans-serif;
 `;

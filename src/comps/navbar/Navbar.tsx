@@ -38,15 +38,21 @@ const Navbar: FC = () => {
             </GridRight>
 
             <GridRight item xs={4}>
-              <ButtonStyled variant="contained">My Recipes</ButtonStyled>
-
-              <IconButton
-                onClick={() => {
-                  setIsOpenSearchbar(!isOpenSearchbar);
-                }}
+              <Link
+                style={{ textDecoration: "none", marginLeft: "auto" }}
+                to={"/favorites"}
               >
-                <SearchIconStyled />
-              </IconButton>
+                <ButtonStyled variant="contained">Favorites</ButtonStyled>
+              </Link>
+              <Link to={"/search"}>
+                <IconButton
+                  onClick={() => {
+                    setIsOpenSearchbar(!isOpenSearchbar);
+                  }}
+                >
+                  <SearchIconStyled />
+                </IconButton>
+              </Link>
             </GridRight>
           </GridBelowWrapper>
         </BoxStyled>
@@ -64,7 +70,6 @@ const ButtonStyled = styled(Button)`
   border-radius: 25px;
   font-size: 11px;
   font-family: "Montserrat", sans-serif;
-  margin-left: auto;
 `;
 const GridWrapper = styled(Grid)`
   width: 100%;
