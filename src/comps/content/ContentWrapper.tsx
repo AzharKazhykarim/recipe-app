@@ -3,8 +3,11 @@ import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { RecipeType } from "./RecipeType";
 import RecipeReviewCard from "../card/RecipeReviewCard";
+import SearchPage from "../searchbar/SearchPage";
+import { useSearchbarContext } from "../../contexts/SearchToggleContext";
 
 const ContentWrapper: FC = () => {
+  const { isOpenSearchbar } = useSearchbarContext();
   const [recipes, setRecipes] = useState<RecipeType>();
   const { category } = useParams();
 
@@ -18,10 +21,11 @@ const ContentWrapper: FC = () => {
     );
     const data = await api.json();
     setRecipes(data.meals);
-    console.log(data.meals);
   };
   return (
     <>
+      {isOpenSearchbar ? <SearchPage /> : null}
+
       <Container fixed>
         <h2 style={{ marginLeft: 15 }}>{category}</h2>
         <Grid container>

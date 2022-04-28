@@ -39,7 +39,9 @@ const RecipeReviewCard: React.FC<CardProps> = ({
 
   return (
     <Card sx={{ maxWidth: 345 }}>
-      <CardHeader title={title} />
+      <CardHeader
+        title={title.length > 24 ? title.slice(0, 20).concat("...") : title}
+      />
       <CardMedia
         component="img"
         height="194"
@@ -59,7 +61,11 @@ const RecipeReviewCard: React.FC<CardProps> = ({
           <FavoriteIconStyled onClick={addToFavorites} />
         </IconButton>
         <IconButton aria-label="share">
-          <a style={{ color: "#68a4a4", display:'flex', alignItems:'center'}} href={strYoutube} target="_blank">
+          <a
+            style={{ color: "#92acbe", display: "flex", alignItems: "center" }}
+            href={strYoutube}
+            target="_blank"
+          >
             <SlowMotionVideoIcon />
           </a>
         </IconButton>
@@ -71,7 +77,7 @@ const RecipeReviewCard: React.FC<CardProps> = ({
 export default RecipeReviewCard;
 
 const FavoriteIconStyled = styled(FavoriteIcon)`
-  color: #68a4a4;
+  color: #92acbe;
 `;
 const CardActionsStyled = styled(CardActions)`
   display: flex;

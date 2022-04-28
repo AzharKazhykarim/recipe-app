@@ -4,21 +4,32 @@ import ContentWrapper from "./comps/content/ContentWrapper";
 import Login from "./comps/login/Login";
 import { useState } from "react";
 import { UserContext } from "./contexts/UserContext";
+import SearchPage from "./comps/searchbar/SearchPage";
+import { SearchbarContext } from "./contexts/SearchToggleContext";
+import Footer from "./comps/footer/Footer";
 
 function App() {
-  //токен просто хранить в себе email при входе с логин
-  //по имейлу можно будет добавлять рецепты в фавориты
   const [token, setToken] = useState<string>("azharkazhikarimova@gmail.com");
-  
+  const [isOpenSearchbar, setIsOpenSearchbar] = useState<boolean>(false);
+
   return (
     <>
       <BrowserRouter>
         <UserContext.Provider value={{ token, setToken }}>
-          <Navbar />
-          <Routes>
-            <Route path="/login" element={<Login />} />
-            <Route path="/categories/:category" element={<ContentWrapper />} />
-          </Routes>
+          <SearchbarContext.Provider
+            value={{ isOpenSearchbar, setIsOpenSearchbar }}
+          >
+            <Navbar />
+            <Routes>
+              <Route path="/login" element={<Login />} />
+              <Route path="/search" element={<SearchPage />} />
+              <Route
+                path="/categories/:category"
+                element={<ContentWrapper />}
+              />
+            </Routes>
+            <Footer/>
+          </SearchbarContext.Provider>
         </UserContext.Provider>
       </BrowserRouter>
     </>
