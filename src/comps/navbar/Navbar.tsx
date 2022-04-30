@@ -3,11 +3,8 @@ import { Box, Button, Grid, IconButton, styled } from "@mui/material";
 import { FC } from "react";
 import { Link } from "react-router-dom";
 import SearchIcon from "@mui/icons-material/Search";
-import { useSearchbarContext } from "../../contexts/SearchToggleContext";
 
 const Navbar: FC = () => {
-  const { isOpenSearchbar, setIsOpenSearchbar } = useSearchbarContext();
-
   return (
     <>
       <GridWrapper container>
@@ -45,11 +42,7 @@ const Navbar: FC = () => {
                 <ButtonStyled variant="contained">Favorites</ButtonStyled>
               </Link>
               <Link to={"/search"}>
-                <IconButton
-                  onClick={() => {
-                    setIsOpenSearchbar(!isOpenSearchbar);
-                  }}
-                >
+                <IconButton>
                   <SearchIconStyled />
                 </IconButton>
               </Link>

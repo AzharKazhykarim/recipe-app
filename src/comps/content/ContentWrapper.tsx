@@ -2,12 +2,10 @@ import { Container, Grid, styled } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipeReviewCard from "../card/RecipeReviewCard";
-import SearchPage from "../searchbar/SearchPage";
-import { useSearchbarContext } from "../../contexts/SearchToggleContext";
 import { RecipeType } from "../../models/RecipeType";
 import { formation } from "../../utils/util";
+
 const ContentWrapper: FC = () => {
-  const { isOpenSearchbar } = useSearchbarContext();
   const [recipes, setRecipes] = useState<RecipeType>();
   const { category } = useParams();
 

@@ -13,7 +13,6 @@ import IconButton, { IconButtonProps } from "@mui/material/IconButton";
 import { useState } from "react";
 import SlowMotionVideoIcon from "@mui/icons-material/SlowMotionVideo";
 import Collapse from "@mui/material/Collapse";
-import MoreVertIcon from "@mui/icons-material/MoreVert";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface CardProps {
   strMeal: string;
@@ -95,7 +94,9 @@ const RecipeReviewCard: React.FC<CardProps> = ({
           {strIngredients
             .filter((ingredient) => ingredient !== "null - null")
             .map((ingredient) => (
-              <Typography key={ingredient} paragraph>{ingredient}</Typography>
+              <Typography key={ingredient} paragraph>
+                {ingredient}
+              </Typography>
             ))}
         </CardContent>
       </Collapse>

@@ -2,11 +2,11 @@ import { Container, Grid, styled } from "@mui/material";
 import { FC, useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import RecipeReviewCard from "../card/RecipeReviewCard";
-import { useSearchbarContext } from "../../contexts/SearchToggleContext";
 import { RecipeType } from "../../models/RecipeType";
 import { formation } from "../../utils/util";
+import SearchPage from "../searchbar/SearchPage";
+
 const SearchedRecipes: FC = () => {
-  const { isOpenSearchbar } = useSearchbarContext();
   const [recipes, setRecipes] = useState<RecipeType>();
   const { input } = useParams();
 
@@ -20,10 +20,11 @@ const SearchedRecipes: FC = () => {
     );
     const data = await api.json();
     setRecipes(data.meals);
-    console.log(data.meals)
+    console.log(data.meals);
   };
   return (
     <>
+      <SearchPage />
       <Container fixed>
         <Grid container>
           {recipes?.map((recipe) => {

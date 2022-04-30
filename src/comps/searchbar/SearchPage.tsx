@@ -1,10 +1,9 @@
-import { Button, Container, Snackbar, styled, TextField } from "@mui/material";
+import { Button, Container, styled, TextField } from "@mui/material";
 import { FC, useEffect, useRef, useState } from "react";
-import Alert from "@mui/material/Alert";
+
 import { useNavigate } from "react-router-dom";
 const SearchPage: FC = () => {
   const [inputSearch, setInputSearch] = useState<string>("");
-  const [isAlertOpened, setIsAlertOpened] = useState(false);
   const inputRef = useRef<HTMLInputElement>(null!);
   const navigate = useNavigate();
 
@@ -17,12 +16,6 @@ const SearchPage: FC = () => {
   }, []);
   return (
     <>
-      <Snackbar open={isAlertOpened}>
-        <Alert variant="filled" severity="warning">
-          Sorry, do not have such recipe yet :(
-        </Alert>
-      </Snackbar>
-
       <ContainerStyled fixed>
         <TextFieldStyled
           ref={inputRef}
