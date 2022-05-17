@@ -72,7 +72,7 @@ const RecipeReviewCard: React.FC<CardProps> = ({
         </IconButton>
         <IconButton aria-label="share">
           <a
-            style={{ color: "#92acbe", display: "flex", alignItems: "center" }}
+            style={{ color: "#353130", display: "flex", alignItems: "center" }}
             href={strYoutube}
             target="_blank"
           >
@@ -85,7 +85,7 @@ const RecipeReviewCard: React.FC<CardProps> = ({
           aria-expanded={expanded}
           aria-label="show more"
         >
-          <ExpandMoreIcon sx={{ color: "#92acbe" }} />
+          <ExpandMoreIcon sx={{ color: "#353130" }} />
         </ExpandMore>
       </CardActionsStyled>
       <Collapse in={expanded} timeout="auto" unmountOnExit>
@@ -107,7 +107,7 @@ const RecipeReviewCard: React.FC<CardProps> = ({
 export default RecipeReviewCard;
 
 const FavoriteIconStyled = styled(FavoriteIcon)`
-  color: #92acbe;
+  color: #353130;
 `;
 const CardActionsStyled = styled(CardActions)`
   display: flex;
