@@ -18,6 +18,7 @@ import { Box, styled } from "@mui/material";
 import SearchedRecipes from "./comps/cardWrapper/SearchedRecipes";
 import Slider from "./comps/slider/Slider";
 import Recipes from "./comps/recipes/Recipes";
+import { MutableRefObject, useRef } from "react";
 const Wrapper = styled(Box)`
   display: flex;
   flex-direction: column;
@@ -25,10 +26,18 @@ const Wrapper = styled(Box)`
   color: #fff;
 `;
 function App() {
+  // const beefRef = useRef as MutableRefObject<HTMLDivElement>
+  // const scrollBeef = () => {
+  //   window.scrollTo({
+  //     top: beefRef.current.offsetTop,
+  //     behavior: "smooth",
+  //   });
+  // };
+
   return (
     <>
       <BrowserRouter>
-        <Navbar />
+        <Navbar/>
         <Slider
           images={[image2, image3, image4, image1, image5]}
           autoPlay={true}
@@ -39,7 +48,7 @@ function App() {
             <p>Nulla vitae elit libero, a pharetra augue.</p>
           </Wrapper>
         </Slider>
-        <Recipes />
+        <Recipes/>
         <Routes>
           <Route path="/login" element={<Login />} />
           <Route path="/search" element={<SearchPage />} />

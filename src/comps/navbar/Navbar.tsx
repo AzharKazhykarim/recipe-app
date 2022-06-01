@@ -1,10 +1,14 @@
 import { AppBar, IconButton, Toolbar, Typography, styled } from "@mui/material";
 import { ShoppingBasket } from "@mui/icons-material";
 import { FC } from "react";
-const Navbar: FC = () => {
+import { Link } from "react-scroll";
+interface Props {
+  // beefSection:()=>void,
+}
+const Navbar: FC<Props> = ({}) => {
   return (
     <>
-      <AppBarStyled position="static">
+      <AppBarStyled position="sticky">
         <Toolbar>
           <Typography
             variant="h6"
@@ -18,21 +22,82 @@ const Navbar: FC = () => {
           >
             Nibble
           </Typography>
-          <Typography component="span" sx={{ flexGrow: 0.3 }}>
-            Beef
-          </Typography>
-          <Typography component="span" sx={{ flexGrow: 0.3 }}>
-            Chicken
-          </Typography>
-          <Typography component="span" sx={{ flexGrow: 0.3 }}>
-            Pork
-          </Typography>
-          <Typography component="span" sx={{ flexGrow: 0.3 }}>
-            Lamb
-          </Typography>
-          <Typography component="span" sx={{ flexGrow: 0.3 }}>
-            Breakfast
-          </Typography>
+
+          <Link
+            to="beef"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            style={{
+              flexGrow: 0.3,
+              cursor: "pointer",
+            }}
+          >
+            <Typography component="span">Beef</Typography>
+          </Link>
+
+          <Link
+            to="chicken"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            style={{
+              flexGrow: 0.3,
+              cursor: "pointer",
+            }}
+          >
+            <Typography component="span">Chicken</Typography>
+          </Link>
+
+          <Link
+            to="pork"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            style={{
+              flexGrow: 0.3,
+              cursor: "pointer",
+            }}
+          >
+            <Typography component="span">Pork</Typography>
+          </Link>
+
+          <Link
+            to=" lamb"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            style={{
+              flexGrow: 0.3,
+              cursor: "pointer",
+            }}
+          >
+            <Typography component="span"> Lamb</Typography>
+          </Link>
+
+          <Link
+            to="breakfast"
+            activeClass="active"
+            spy={true}
+            smooth={true}
+            duration={500}
+            offset={-80}
+            style={{
+              flexGrow: 0.3,
+              cursor: "pointer",
+            }}
+          >
+            <Typography component="span">Breakfast</Typography>
+          </Link>
+
           <IconButton color="inherit">
             <ShoppingBasket />
           </IconButton>
