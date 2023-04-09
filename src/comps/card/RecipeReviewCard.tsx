@@ -1,7 +1,6 @@
 import * as React from "react";
 import { styled } from "@mui/material/styles";
 import Card from "@mui/material/Card";
-import CardHeader from "@mui/material/CardHeader";
 import CardMedia from "@mui/material/CardMedia";
 import CardContent from "@mui/material/CardContent";
 import CardActions from "@mui/material/CardActions";
@@ -15,6 +14,7 @@ import SlowMotionVideoIcon from "@mui/icons-material/SlowMotionVideo";
 import Collapse from "@mui/material/Collapse";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 interface CardProps {
+  idMeal: number;
   strMeal: string;
   strMealThumb: string;
   strYoutube: string;
@@ -23,36 +23,40 @@ interface CardProps {
 }
 
 const RecipeReviewCard: React.FC<CardProps> = ({
+  idMeal,
   strMeal,
   strMealThumb,
   strYoutube,
   strIngredients,
-  strInstructions,
 }) => {
-  const [recipe] = useState<string>(strMeal);
   const { token } = useUserContext();
   const [expanded, setExpanded] = React.useState(false);
-
   const handleExpandClick = () => {
     setExpanded(!expanded);
   };
 
+  let complete =
+    strIngredients[0] + ", " + strIngredients[1] + ", " + strIngredients[2];
+  complete = complete.length > 35 ? complete.slice(0, 35) : complete;
+
   const addToFavorites = () => {
     users.map((user) => {
+    
       if (user.email === token) {
-        user.listRecipes.push(recipe);
-        //TODO: ALERT
+        if (!contains(user.listRecipes, strMeal)) {
+          user.listRecipes.push(strMeal);
+          alert("Added");
+        } else {
+          alert("Already in Favs");
+        }
       }
     });
   };
 
   return (
-    <Card sx={{ maxWidth: 345 }}>
-      <CardHeader
-        title={
-          strMeal.length > 24 ? strMeal.slice(0, 20).concat("...") : strMeal
-        }
-      />
+    <Card
+      sx={{ maxWidth: 345, width: 310, margin: "10px", borderRadius: "9px" }}
+    >
       <CardMedia
         component="img"
         height="194"
@@ -61,8 +65,16 @@ const RecipeReviewCard: React.FC<CardProps> = ({
       />
 
       <CardContent>
+        <Typography sx={{ fontSize: "25px" }}>
+          <b>
+            {" "}
+            {strMeal.length > 22
+              ? strMeal.slice(0, 18).concat("...")
+              : strMeal}{" "}
+          </b>
+        </Typography>
         <Typography variant="body2" color="text.secondary">
-          {/* TODO: here will be recipe list */}
+          {expanded === false ? complete + "..." : null}
         </Typography>
       </CardContent>
 
@@ -92,7 +104,7 @@ const RecipeReviewCard: React.FC<CardProps> = ({
         <CardContent>
           <Typography paragraph>Ingredients:</Typography>
           {strIngredients
-            .filter((ingredient) => ingredient !== "null - null")
+            .filter((ingredient) => ingredient !== "null -")
             .map((ingredient) => (
               <Typography key={ingredient} paragraph>
                 {ingredient}
@@ -129,3 +141,12 @@ const ExpandMore = styled((props: ExpandMoreProps) => {
     duration: theme.transitions.duration.shortest,
   }),
 }));
+
+function contains(arr: Array<string>, elem: string) {
+  for (const element of arr) {
+    if (element === elem) {
+      return true;
+    }
+  }
+  return false;
+}

@@ -2,6 +2,7 @@ import { AppBar, IconButton, Toolbar, Typography, styled } from "@mui/material";
 import { ShoppingBasket } from "@mui/icons-material";
 import { FC } from "react";
 import { Link } from "react-scroll";
+import { NavLink } from "react-router-dom";
 interface Props {
   // beefSection:()=>void,
 }
@@ -10,19 +11,22 @@ const Navbar: FC<Props> = ({}) => {
     <>
       <AppBarStyled position="sticky">
         <Toolbar>
-          <Typography
-            variant="h6"
-            component="span"
-            sx={{
-              flexGrow: 6,
-              fontFamily: `'Oleo Script Swash Caps', cursive`,
-              fontSize: "30px",
-              marginLeft: "20px",
-            }}
+          <NavLink
+            to="/"
+            style={{ color: "#fff", textDecoration: "none", flexGrow: 6 }}
           >
-            Nibble
-          </Typography>
-
+            <Typography
+              variant="h6"
+              component="span"
+              sx={{
+                fontFamily: `'Oleo Script Swash Caps', cursive`,
+                fontSize: "30px",
+                marginLeft: "20px",
+              }}
+            >
+              Nibble
+            </Typography>
+          </NavLink>
           <Link
             to="beef"
             activeClass="active"
@@ -82,7 +86,6 @@ const Navbar: FC<Props> = ({}) => {
           >
             <Typography component="span"> Lamb</Typography>
           </Link>
-
           <Link
             to="breakfast"
             activeClass="active"
@@ -97,16 +100,18 @@ const Navbar: FC<Props> = ({}) => {
           >
             <Typography component="span">Breakfast</Typography>
           </Link>
-
-          <IconButton color="inherit">
-            <ShoppingBasket />
-          </IconButton>
+          <NavLink to="/favorites">
+            <IconButton color="inherit" sx={{ color: "#fff" }}>
+              <ShoppingBasket />
+            </IconButton>
+          </NavLink>
         </Toolbar>
       </AppBarStyled>
     </>
   );
 };
+
+export default Navbar;
 const AppBarStyled = styled(AppBar)`
   background: #353130;
 `;
-export default Navbar;

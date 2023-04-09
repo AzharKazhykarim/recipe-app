@@ -1,62 +1,44 @@
 import Navbar from "./comps/navbar/Navbar";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import CardWrapperList from "./comps/cardWrapper/CardWrapperList";
 import Login from "./comps/login/Login";
 import SearchPage from "./comps/searchbar/SearchPage";
-// @ts-ignore
-import image1 from "./assets/slide1.jpg";
-// @ts-ignore
-import image2 from "./assets/slide2.jpg";
-// @ts-ignore
-import image3 from "./assets/slide3.jpg";
-// @ts-ignore
-import image4 from "./assets/slide4.jpg";
-// @ts-ignore
-import image5 from "./assets/slide5.jpg";
-import { Box, styled } from "@mui/material";
-
 import SearchedRecipes from "./comps/cardWrapper/SearchedRecipes";
-import Slider from "./comps/slider/Slider";
-import Recipes from "./comps/recipes/Recipes";
-import { MutableRefObject, useRef } from "react";
-const Wrapper = styled(Box)`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  color: #fff;
-`;
+import Favorites from "./comps/favorites/Favorites";
+import Main from "./comps/main/Main";
+import { UserContext } from "./contexts/UserContext";
+import { useEffect, useState } from "react";
+import { users } from "./db/users";
+import { UserInterface } from "./models/UserInterface";
+
 function App() {
-  // const beefRef = useRef as MutableRefObject<HTMLDivElement>
-  // const scrollBeef = () => {
-  //   window.scrollTo({
-  //     top: beefRef.current.offsetTop,
-  //     behavior: "smooth",
-  //   });
-  // };
+  const [token, setToken] = useState("azhar");
+  // const favs: string[] = getFavs(token, users);
 
   return (
     <>
-      <BrowserRouter>
-        <Navbar/>
-        <Slider
-          images={[image2, image3, image4, image1, image5]}
-          autoPlay={true}
-          autoPlayTime={3000}
-        >
-          <Wrapper>
-            <h1>Nibble</h1>
-            <p>Nulla vitae elit libero, a pharetra augue.</p>
-          </Wrapper>
-        </Slider>
-        <Recipes/>
-        <Routes>
-          <Route path="/login" element={<Login />} />
-          <Route path="/search" element={<SearchPage />} />
-          <Route path="/search/search/:input" element={<SearchedRecipes />} />
-        </Routes>
-      </BrowserRouter>
+      <UserContext.Provider value={{ token, setToken }}>
+        <BrowserRouter>
+          <Navbar />
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/search" element={<SearchPage />} />
+            <Route path="/favorites" element={<Favorites favorites={[]} />} />
+            <Route path="/search/search/:input" element={<SearchedRecipes />} />
+          </Routes>
+        </BrowserRouter>
+      </UserContext.Provider>
     </>
   );
 }
-
 export default App;
+
+function getFavs(token: string, users: UserInterface[]) {
+  const ok: string[] = [];
+  for (const user of users) {
+    if (user.email === token) {
+      return user.listRecipes;
+    }
+    return ok;
+  }
+}

@@ -1,9 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="e14d89b0-85dd-4fca-9f5a-d309bfb5b9fd" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+    <list default="true" id="358857c7-735e-4e0e-8015-9c3b020cfc20" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/App.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/App.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comps/card/RecipeReviewCard.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/comps/card/RecipeReviewCard.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comps/cardWrapper/CardWrapperList.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/comps/cardWrapper/CardWrapperList.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comps/cardWrapper/SearchedRecipes.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/comps/cardWrapper/SearchedRecipes.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comps/navbar/Navbar.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/comps/navbar/Navbar.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/comps/slider/Slider.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/src/comps/slider/Slider.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/db/users.tsx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/index.css" beforeDir="false" afterPath="$PROJECT_DIR$/src/index.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/models/UserInterface.ts" beforeDir="false" afterPath="$PROJECT_DIR$/src/models/UserInterface.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,7 +24,7 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectId" id="29q3qzYbaNwmTMuFgF5gz7yzidP" />
+  <component name="ProjectId" id="2EA5b1jrE7k1MU3WTKGPybFOvVt" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -35,12 +43,18 @@
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
-      <changelist id="e14d89b0-85dd-4fca-9f5a-d309bfb5b9fd" name="Changes" comment="" />
-      <created>1653826991808</created>
+      <changelist id="358857c7-735e-4e0e-8015-9c3b020cfc20" name="Changes" comment="" />
+      <created>1662025624396</created>
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
-      <updated>1653826991808</updated>
-      <workItem from="1653826993747" duration="351000" />
+      <updated>1662025624396</updated>
+      <workItem from="1662025629351" duration="187000" />
+      <workItem from="1662027651781" duration="77000" />
+      <workItem from="1663169774908" duration="432000" />
+      <workItem from="1663384490423" duration="427000" />
+      <workItem from="1674457925633" duration="484000" />
+      <workItem from="1674474488364" duration="193000" />
+      <workItem from="1675234654685" duration="545000" />
     </task>
     <servers />
   </component>

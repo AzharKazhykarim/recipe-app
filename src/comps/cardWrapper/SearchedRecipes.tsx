@@ -35,6 +35,7 @@ const SearchedRecipes: FC = () => {
             return (
               <GridStyled item xs={4} md={4} key={recipe.idMeal}>
                 <RecipeReviewCard
+                  idMeal={recipe.idMeal}
                   strMeal={recipe.strMeal}
                   strMealThumb={recipe.strMealThumb}
                   strIngredients={filteredArr}

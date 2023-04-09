@@ -43,9 +43,10 @@ const Indicator = ({ currentSlide, amountSlides, nextSlide }) => {
 const Wrapper = styled(Box)`
   height: 640px;
   display: flex;
-  flex-wrap: nowrap;
+  
   overflow-x: hidden;
   position: relative;
+  white-space:nowrap;
 `;
 
 const Slide = styled(Box)`

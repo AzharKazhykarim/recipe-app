@@ -7,3 +7,15 @@ h4 {
   margin-left: 30px;
   color: white;
 }
+#slider{
+  display:flex;
+  width: 100%;
+  white-space:nowrap;
+  position:relative;
+  overflow-x:scroll;
+  scroll-behavior: smooth;
+  
+}
+#slider::-webkit-scrollbar{
+  display:none;
+}
